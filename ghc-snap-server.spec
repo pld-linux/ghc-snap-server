@@ -2,7 +2,7 @@
 Summary:	A fast, iteratee-based, epoll-enabled web server for the Snap Framework
 Name:		ghc-%{pkgname}
 Version:	0.9.3.4
-Release:	0.1
+Release:	1
 License:	BSD
 Group:		Development/Languages
 Source0:	http://hackage.haskell.org/packages/archive/%{pkgname}/%{version}/%{pkgname}-%{version}.tar.gz
@@ -10,13 +10,22 @@ Source0:	http://hackage.haskell.org/packages/archive/%{pkgname}/%{version}/%{pkg
 URL:		http://hackage.haskell.org/package/snap-server/
 BuildRequires:	ghc >= 6.12.3
 BuildRequires:	ghc-prof
+BuildRequires:	ghc-attoparsec
+BuildRequires:	ghc-attoparsec-prof
 BuildRequires:	ghc-attoparsec-enumerator
+BuildRequires:	ghc-attoparsec-enumerator-prof
 BuildRequires:	ghc-blaze-builder >= 0.2.1.4
+BuildRequires:	ghc-blaze-builder-prof >= 0.2.1.4
 BuildRequires:	ghc-blaze-builder-enumerator >= 0.2.0
+BuildRequires:	ghc-blaze-builder-enumerator-prof >= 0.2.0
 BuildRequires:	ghc-enumerator >= 0.4.15
+BuildRequires:	ghc-enumerator-prof >= 0.4.15
 BuildRequires:	ghc-MonadCatchIO-transformers >= 0.2.1
+BuildRequires:	ghc-MonadCatchIO-transformers-prof >= 0.2.1
 BuildRequires:	ghc-snap-core >= 0.9.3
+BuildRequires:	ghc-snap-core-prof >= 0.9.3
 BuildRequires:	ghc-unix-compat >= 0.2
+BuildRequires:	ghc-unix-compat-prof >= 0.2
 BuildRequires:	rpmbuild(macros) >= 1.608
 %requires_releq	ghc
 Requires(post,postun):	/usr/bin/ghc-pkg
@@ -50,6 +59,14 @@ Summary:	Profiling %{pkgname} library for GHC
 Summary(pl.UTF-8):	Biblioteka profilująca %{pkgname} dla GHC.
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+BuildRequires:	ghc-attoparsec-prof
+BuildRequires:	ghc-attoparsec-enumerator-prof
+BuildRequires:	ghc-blaze-builder-prof
+BuildRequires:	ghc-blaze-builder-enumerator-prof
+BuildRequires:	ghc-enumerator-prof
+BuildRequires:	ghc-MonadCatchIO-transformers-prof
+BuildRequires:	ghc-snap-core-prof
+BuildRequires:	ghc-unix-compat-prof
 
 %description prof
 Profiling %{pkgname} library for GHC.  Should be installed when
@@ -97,18 +114,37 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc NEWS
+%doc CONTRIBUTORS README*
 %doc %{name}-%{version}-doc/*
 %{_libdir}/%{ghcdir}/package.conf.d/%{pkgname}.conf
 %dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/*.o
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/*.a
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/*.hi
 %exclude %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/*_p.a
 
-%dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/PACKAGE
-%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/PACKAGE/*.hi
+%dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Snap
+%dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Snap/Http
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Snap/Http/*.hi
+%dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Snap/Http/Server
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Snap/Http/Server/*.hi
+%dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Snap/Internal
+%dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Snap/Internal/Http
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Snap/Internal/Http/*.hi
+%dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Snap/Internal/Http/Server
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Snap/Internal/Http/Server/*.hi
+%dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/System
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/System/*.hi
+%dir %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/System/SendFile
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/System/SendFile/*.hi
 
 %files prof
 %defattr(644,root,root,755)
 %{_libdir}/%{ghcdir}/%{pkgname}-%{version}/*_p.a
-%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/PACKAGE/*.p_hi
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/*.p_hi
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Snap/Http/*.p_hi
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Snap/Http/Server/*.p_hi
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Snap/Internal/Http/*.p_hi
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/Snap/Internal/Http/Server/*.p_hi
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/System/*.p_hi
+%{_libdir}/%{ghcdir}/%{pkgname}-%{version}/System/SendFile/*.p_hi
