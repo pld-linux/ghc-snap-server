@@ -2,7 +2,7 @@
 Summary:	A fast, iteratee-based, epoll-enabled web server for the Snap Framework
 Name:		ghc-%{pkgname}
 Version:	0.9.3.4
-Release:	2
+Release:	3
 License:	BSD
 Group:		Development/Languages
 Source0:	http://hackage.haskell.org/packages/archive/%{pkgname}/%{version}/%{pkgname}-%{version}.tar.gz
@@ -34,7 +34,7 @@ Requires:	ghc-blaze-builder >= 0.2.1.4
 Requires:	ghc-blaze-builder-enumerator >= 0.2.0
 Requires:	ghc-enumerator >= 0.4.15
 Requires:	ghc-MonadCatchIO-transformers >= 0.2.1
-Requires:	ghc-snap-core >= 0.9.3
+%requires_eq ghc-snap-core
 Requires:	ghc-unix-compat >= 0.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
