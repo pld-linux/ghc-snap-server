@@ -1,12 +1,12 @@
 %define		pkgname	snap-server
 Summary:	A fast, iteratee-based, epoll-enabled web server for the Snap Framework
 Name:		ghc-%{pkgname}
-Version:	0.9.3.4
-Release:	3
+Version:	0.9.4.0
+Release:	1
 License:	BSD
 Group:		Development/Languages
 Source0:	http://hackage.haskell.org/packages/archive/%{pkgname}/%{version}/%{pkgname}-%{version}.tar.gz
-# Source0-md5:	3a104cb7d3b2ad0858aa9f87c0762216
+# Source0-md5:	4ee81486fcaf568a9f6ae58a4df1e28a
 URL:		http://hackage.haskell.org/package/snap-server/
 BuildRequires:	ghc >= 6.12.3
 BuildRequires:	ghc-prof
