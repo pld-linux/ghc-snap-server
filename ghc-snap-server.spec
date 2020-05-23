@@ -27,7 +27,7 @@ BuildRequires:	ghc-snap-core-prof >= 0.9.3
 BuildRequires:	ghc-unix-compat >= 0.2
 BuildRequires:	ghc-unix-compat-prof >= 0.2
 BuildRequires:	rpmbuild(macros) >= 1.608
-%requires_releq	ghc
+%requires_eq	ghc
 Requires(post,postun):	/usr/bin/ghc-pkg
 Requires:	ghc-attoparsec-enumerator
 Requires:	ghc-blaze-builder >= 0.2.1.4
